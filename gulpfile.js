@@ -9,6 +9,7 @@
   var sourcemaps = require('gulp-sourcemaps');
 
   var onError = function(err) {
+    // eslint-disable-next-line no-console
     console.log('An error ocurred: ', gutil.colors.magenta(err.message));
     gutil.beep();
     this.emit('end');

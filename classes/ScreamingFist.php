@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class that encapsulates theme functionality.
+ */
 class ScreamingFist {
   const NAME = 'ScreamingFist';
 
@@ -7,6 +10,11 @@ class ScreamingFist {
 
   private static $instance = null;
 
+  /**
+   * Get instance of class.
+   *
+   * @return ScreamingFist
+   */
   public static function getInstance() {
     if ( null === self::$instance ) {
       self::$instance = new self;
@@ -15,6 +23,7 @@ class ScreamingFist {
     return self::$instance;
   }
 
+  // constructor
   private function __construct() {
     if ( !is_admin() ) {
       $this->_setup_styles();
@@ -22,17 +31,19 @@ class ScreamingFist {
 
     if ( is_admin() ) {
       $this->_customize_editor();
-      $this->_customize_wordpress_admin();
+      $this->_customize_admin();
     }
   }
 
   // ==============================================
   // Setup/Prep Functions
   // ==============================================
+  // Setup hooks to add CSS to site
   private function _setup_styles() {
     add_action( 'wp_enqueue_scripts', array($this, 'enqueueStyles') );
   }
 
+  // Setup hooks to customize the editor
   private function _customize_editor() {
     // Load custom CSS for the editor
     add_action( 'init', array($this, 'addEditorStyles') );
@@ -47,7 +58,8 @@ class ScreamingFist {
     add_filter( 'tiny_mce_before_init', array($this, 'addStyleFormats') );
   }
 
-  private function _customize_wordpress_admin() {
+  // Setup hooks to customize the admin
+  private function _customize_admin() {
     add_action( 'admin_enqueue_script', array($this, 'addAdminStyles') );
   }
 
@@ -55,6 +67,18 @@ class ScreamingFist {
   // ==============================================
   // Work Functions
   // ==============================================
+  
+  /**
+   * Add CSS to site.
+   *
+   * @since 1.0.0
+   *
+   * @uses wp_enqueue_style
+   * 
+   * @see 'wp_enqueue_scripts' hook
+   *
+   * @return void
+   */
   public function enqueueStyles() {
     $handle = $this->themePrefix . '-style';
 
@@ -82,7 +106,13 @@ class ScreamingFist {
   /**
    * Loads custom CSS for the editor
    *
-   * @see 'init'
+   * @since 1.0.0
+   * 
+   * @see 'init' hook
+   *
+   * @uses add_editor_style
+   *
+   * @return void
    */
   public function addEditorStyles() {
     $css_filename = $this->editorCssFilename();
@@ -92,7 +122,12 @@ class ScreamingFist {
   /**
    * Inject version number in editor CSS URL.
    *
-   * @see 'editor_stylesheets'
+   * @since 1.0.0
+   *
+   * @see 'editor_stylesheets' hook
+   *
+   * @param  array  $stylesheets
+   * @return array
    */
   public function addCssVersionForEditor($stylesheets) {
     $editor_css_filename = $this->editorCssFilename();
@@ -111,7 +146,14 @@ class ScreamingFist {
   /**
    * Enables Style dropdown in editor.
    *
-   * @see 'mce_buttons_2'
+   * @since 1.0.0
+   *
+   * @see 'mce_buttons_2' hook
+   *
+   * @uses $this->getStyleFormats
+   *
+   * @param  array  $buttons
+   * @return array
    */
   public function addEditorStyleDropdown($buttons) {
     $style_formats = $this->getStyleFormats();
@@ -125,7 +167,14 @@ class ScreamingFist {
   /**
    * Adds classes to Style dropdown
    *
-   * @see 'tiny_mce_before_init'
+   * @since 1.0.0
+   *
+   * @see 'tiny_mce_before_init' hook
+   *
+   * @uses $this->getStyleFormats
+   *
+   * @param  array  $settings
+   * @return array
    */
   public function addStyleFormats($settings) {
     $style_formats = $this->getStyleFormats();
@@ -139,7 +188,13 @@ class ScreamingFist {
   /**
    * Add CSS file for admin styles
    *
-   * @see 'admin_enqueue_script'
+   * @since 1.0.0
+   *
+   * @see 'admin_enqueue_script' hook
+   *
+   * @uses $this->themePrefix, $this->adminCssFilename, $this->CssVersion, wp_enqueue_style
+   *
+   * @return void
    */
   public function addAdminStyles() {
     $handle = $this->themePrefix() . '-admin-style';
@@ -207,7 +262,9 @@ class ScreamingFist {
   }
 
   /**
-   * Gets the CSS version number
+   * Gets the CSS version number.
+   *
+   * If WordPress has `WP_DEBUG` enabled will use `time()` for version number so that file will never be cached.
    *
    * @since 1.0.0
    *

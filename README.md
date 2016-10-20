@@ -4,6 +4,8 @@
 
 ![Screaming Fist Logo created by [Michael Wolfe](http://www.wolfecreativedesign.com/#/screaming-fist/)](./screaming-fist-logo.png)
 
+Screaming Fist Logo created by [Michael Wolfe](http://www.wolfecreativedesign.com/#/screaming-fist/)
+
 ## Setup
 
 ```

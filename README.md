@@ -14,4 +14,3 @@ gulp
 ## Resources
 
 * <https://sass-guidelin.es/> - An opinionated styleguide for writing sane, maintainable and scalable Sass.
-* 

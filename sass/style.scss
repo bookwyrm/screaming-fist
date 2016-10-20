@@ -5,3 +5,11 @@ Author URI: https://mattvanderpol.com
 Description: Starter theme for WordPress with Sass
 Version: 1.0.0
 */
+
+@import 'vendor/index';
+@import 'utils/index';
+@import 'base/index';
+@import 'globals/index';
+@import 'layouts/index';
+@import 'components/index';
+@import 'pages/index';

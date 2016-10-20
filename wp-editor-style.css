@@ -1,0 +1,9 @@
+/**
+ * Styles just for the WP WYSIWYG Editor
+ */
+html,
+body {
+  height: auto; }
+
+body {
+  background-color: #f6f6f6; }

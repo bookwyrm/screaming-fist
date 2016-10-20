@@ -1,0 +1,18 @@
+/**
+ * Styles just for the WP WYSIWYG Editor
+ */
+@import 'utils/index';
+@import 'base/index';
+
+$lt-background-color: $color--off-white;
+
+// Prevent issues scrolling to the bottom of a WYSIWYG
+html,
+body {
+  height: auto;
+}
+
+body {
+  // Use subtle off-white color so that white images with transparent BG's show up
+  background-color: $lt-background-color;
+}

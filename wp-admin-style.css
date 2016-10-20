@@ -1,3 +1,5 @@
 /**
  * Styles just for the WP Admin
  */
+div.mce-panel {
+  background: #f6f6f6; }

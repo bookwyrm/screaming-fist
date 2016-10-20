@@ -1,2 +1,13 @@
-body,html{height:100%}body{position:relative}
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJhc2UvX2Jhc2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxVQUVFLFdBQWEsQ0FDZCxBQUVELEtBQ0UsaUJBQW1CLENBQ3BCIiwiZmlsZSI6InN0eWxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImh0bWwsXG5ib2R5IHtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG5ib2R5IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */
+/*
+Theme Name: Screaming Fist
+Author: Matt Vanderpol
+Author URI: https://mattvanderpol.com
+Description: Starter theme for WordPress with Sass
+Version: 1.0.0
+*/
+html,
+body {
+  height: 100%; }
+
+body {
+  position: relative; }

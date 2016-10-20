@@ -27,8 +27,8 @@
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'nested' }))
     .pipe(postcss(processors))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./'))
+    .pipe(sourcemaps.write())
     .pipe(rename("style-dev.css"))
     .pipe(gulp.dest('./'))
   });
@@ -43,8 +43,6 @@
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'nested' }))
     .pipe(postcss(processors))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./'))
     .pipe(rename("style-prod.css"))
     .pipe(gulp.dest('./'))
   });

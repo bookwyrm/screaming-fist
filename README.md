@@ -1,6 +1,8 @@
 # Screaming Fist
 
-### A sample WordPress theme demonstrating using [Sass](https://sass-lang.com)
+### A sample WordPress theme demonstrating use of [Sass](https://sass-lang.com) to create custom themes.
+
+![Screaming Fist Logo created by [Michael Wolfe](http://www.wolfecreativedesign.com/#/screaming-fist/)](./screaming-fist-logo.png)
 
 ## Setup
 

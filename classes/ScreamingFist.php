@@ -387,7 +387,8 @@ class ScreamingFist {
     $handle = $this->themePrefix() . '-admin-style';
     $src = get_stylesheet_directory_uri() . '/' . $this->adminCssFilename();
     $version = $this->themeCssVersion();
-    wp_enqueue_style($handle, $src, array(), $version);
+    $deps = array('editor-buttons');
+    wp_enqueue_style($handle, $src, $deps, $version);
   }
 
   // ==============================================

@@ -3,4 +3,8 @@
  */
 @import 'utils/index';
 
+div.mce-panel {
+  background: $t-editor-bg-color;
+}
+
 // Other styles for WP Admin go here

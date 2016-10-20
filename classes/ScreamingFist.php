@@ -337,13 +337,13 @@ class ScreamingFist {
    *
    * @see 'mce_buttons_2' hook
    *
-   * @uses $this->getStyleFormats
+   * @uses $this->styleFormats
    *
    * @param  array  $buttons
    * @return array
    */
   public function addEditorStyleDropdown($buttons) {
-    $style_formats = $this->getStyleFormats();
+    $style_formats = $this->styleFormats();
     if ( count($style_formats) > 0 ) {
       array_unshift($buttons, 'styleselect');
     }
@@ -358,13 +358,13 @@ class ScreamingFist {
    *
    * @see 'tiny_mce_before_init' hook
    *
-   * @uses $this->getStyleFormats
+   * @uses $this->styleFormats
    *
    * @param  array  $settings
    * @return array
    */
   public function addStyleFormats($settings) {
-    $style_formats = $this->getStyleFormats();
+    $style_formats = $this->styleFormats();
     if ( count($style_formats) > 0 ) {
       $settings['style_formats'] = json_encode($style_formats);
     }

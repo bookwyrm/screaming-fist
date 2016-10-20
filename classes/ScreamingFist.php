@@ -103,7 +103,7 @@ class ScreamingFist {
 
   // Setup hooks to customize the admin
   private function _customize_admin() {
-    add_action( 'admin_enqueue_script', array($this, 'addAdminStyles') );
+    add_action( 'admin_enqueue_scripts', array($this, 'addAdminStyles') );
   }
 
 

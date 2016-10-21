@@ -49,16 +49,24 @@
 
 
   gulp.task('sass-editor', function() {
+    var processors = [
+      autoprefixer({browsers: ['last 2 versions']}),
+    ];
     return gulp.src('./sass/wp-editor-style.scss')
     .pipe(plumber({errorHandler: onError}))
     .pipe(sass({ outputStyle: 'nested' }))
+    .pipe(postcss(processors))
     .pipe(gulp.dest('./'))
   });
 
   gulp.task('sass-admin', function() {
+    var processors = [
+      autoprefixer({browsers: ['last 2 versions']}),
+    ];
     return gulp.src('./sass/wp-admin-style.scss')
     .pipe(plumber({errorHandler: onError}))
     .pipe(sass({ outputStyle: 'nested' }))
+    .pipe(postcss(processors))
     .pipe(gulp.dest('./'))
   });
 

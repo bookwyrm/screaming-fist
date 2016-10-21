@@ -80,6 +80,10 @@
     }));
   });
 
+  gulp.task('watch', ['sass'], function() {
+    gulp.watch('./sass/**/*.scss', ['sass']);
+  });
+
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);
   gulp.task('sass', [ 'sass-site', 'sass-editor', 'sass-admin' ]);
   gulp.task('default', ['sass-site']);

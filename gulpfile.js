@@ -11,6 +11,7 @@
   var autoprefixer = require('autoprefixer');
   var cssnano = require('cssnano');
   var gulpStylelint = require('gulp-stylelint');
+  var livereload = require('gulp-livereload');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
@@ -32,6 +33,7 @@
     .pipe(sourcemaps.write())
     .pipe(rename("style-dev.css"))
     .pipe(gulp.dest('./'))
+    .pipe(livereload())
   });
 
   gulp.task('sass-site-prod', ['lint-sass'], function() {
@@ -81,6 +83,7 @@
   });
 
   gulp.task('watch', ['sass'], function() {
+    livereload.listen();
     gulp.watch('./sass/**/*.scss', ['sass']);
   });
 

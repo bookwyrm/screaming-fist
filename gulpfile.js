@@ -10,6 +10,7 @@
   var postcss = require('gulp-postcss');
   var autoprefixer = require('autoprefixer');
   var cssnano = require('cssnano');
+  var gulpStylelint = require('gulp-stylelint');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
@@ -18,7 +19,7 @@
     this.emit('end');
   }
 
-  gulp.task('sass-site-dev', function() {
+  gulp.task('sass-site-dev', ['lint-sass'], function() {
     var processors = [
       autoprefixer({browsers: ['last 2 versions']}),
     ];
@@ -33,7 +34,7 @@
     .pipe(gulp.dest('./'))
   });
 
-  gulp.task('sass-site-prod', function() {
+  gulp.task('sass-site-prod', ['lint-sass'], function() {
     var processors = [
       autoprefixer({browsers: ['last 2 versions']}),
       cssnano(),
@@ -48,7 +49,7 @@
   });
 
 
-  gulp.task('sass-editor', function() {
+  gulp.task('sass-editor', ['lint-sass'], function() {
     var processors = [
       autoprefixer({browsers: ['last 2 versions']}),
     ];
@@ -59,7 +60,7 @@
     .pipe(gulp.dest('./'))
   });
 
-  gulp.task('sass-admin', function() {
+  gulp.task('sass-admin', ['lint-sass'], function() {
     var processors = [
       autoprefixer({browsers: ['last 2 versions']}),
     ];
@@ -70,6 +71,16 @@
     .pipe(gulp.dest('./'))
   });
 
+  gulp.task('lint-sass', function() {
+    return gulp.src('./sass/**/*.scss')
+    .pipe(gulpStylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
+  });
+
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);
+  gulp.task('sass', [ 'sass-site', 'sass-editor', 'sass-admin' ]);
   gulp.task('default', ['sass-site']);
 }());

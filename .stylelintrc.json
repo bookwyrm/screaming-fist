@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "scss/dollar-variable-colon-space-before": "never",
+    "scss/dollar-variable-colon-space-after": "always"
+  }
+}

@@ -1,0 +1,29 @@
+// heading resets
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+.b-main-heading {
+  font-size: ms(4);
+}
+
+h2,
+.b-sub-heading {
+  font-size: ms(3);
+}
+
+h3,
+.b-section-heading {
+  font-size: ms(2);
+}
+
+h4,
+.b-block-heading {
+  font-size: ms(1);
+}
+
+p {
+  line-height: 1.4;
+}

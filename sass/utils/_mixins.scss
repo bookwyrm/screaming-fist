@@ -1,0 +1,13 @@
+@mixin content-list {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 25px;
+
+  &::before {
+    @include position(absolute, em(9px) null null em(16px));
+    @include size(em(6px));
+    border-radius: 100%;
+    background: $t-bullet-color;
+    content: '';
+  }
+}

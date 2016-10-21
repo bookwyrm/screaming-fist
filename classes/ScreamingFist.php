@@ -116,9 +116,9 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @uses wp_enqueue_style
+   * @uses wp_enqueue_style()
    *
-   * @see 'wp_enqueue_scripts' hook
+   * @see 'wp_enqueue_scripts'
    *
    * @return void
    */
@@ -151,9 +151,9 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @uses $this->debugModeActive
+   * @uses $this->debugModeActive()
    *
-   * @see 'stylesheet_uri' hook
+   * @see 'stylesheet_uri'
    *
    * @param  string  $stylesheet_uri
    */
@@ -175,7 +175,7 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'body_class' hook
+   * @see 'body_class'
    *
    * @param  array  $classes
    * @return array
@@ -208,7 +208,7 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @uses register_nav_menus
+   * @uses register_nav_menus()
    *
    * @return void
    */
@@ -237,7 +237,7 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @uses register_sidebar
+   * @uses register_sidebar()
    *
    * @return void
    */
@@ -295,9 +295,9 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'init' hook
+   * @see 'init'
    *
-   * @uses add_editor_style
+   * @uses add_editor_style()
    *
    * @return void
    */
@@ -311,7 +311,7 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'editor_stylesheets' hook
+   * @see 'editor_stylesheets'
    *
    * @param  array  $stylesheets
    * @return array
@@ -335,9 +335,9 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'mce_buttons_2' hook
+   * @see 'mce_buttons_2'
    *
-   * @uses $this->styleFormats
+   * @uses $this->styleFormats()
    *
    * @param  array  $buttons
    * @return array
@@ -356,9 +356,9 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'tiny_mce_before_init' hook
+   * @see 'tiny_mce_before_init'
    *
-   * @uses $this->styleFormats
+   * @uses $this->styleFormats()
    *
    * @param  array  $settings
    * @return array
@@ -377,9 +377,12 @@ class ScreamingFist {
    *
    * @since 1.0.0
    *
-   * @see 'admin_enqueue_script' hook
+   * @see 'admin_enqueue_script'
    *
-   * @uses $this->themePrefix, $this->adminCssFilename, $this->CssVersion, wp_enqueue_style
+   * @uses $this->themePrefix()
+   * @uses $this->adminCssFilename()
+   * @uses $this->CssVersion()
+   * @uses wp_enqueue_style()
    *
    * @return void
    */

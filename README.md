@@ -41,4 +41,6 @@ gulp watch
 ### Resources
 
 * <https://sass-guidelin.es/> - An opinionated styleguide for writing sane, maintainable and scalable Sass.
+* <https://sass-guidelin.es/#the-7-1-pattern> - The 7-1 Pattern for Sass architecture
 * <http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/>
+

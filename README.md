@@ -13,6 +13,16 @@ npm install
 gulp
 ```
 
+## Class Namespaces
+
+* `b-` base styles
+* `c-` components
+* `l-` layouts
+* `t-` global tokens
+* `lt-` local tokens
+* `s-` scopes
+
 ## Resources
 
 * <https://sass-guidelin.es/> - An opinionated styleguide for writing sane, maintainable and scalable Sass.
+* <http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/>

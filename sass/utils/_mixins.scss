@@ -11,3 +11,35 @@
     content: '';
   }
 }
+
+@mixin ie10-and-up {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content
+  }
+}
+
+@mixin js--enabled() {
+  @at-root .html--js #{&} {
+    @content;
+  }
+}
+
+@mixin js--disabled() {
+  @at-root .html--no-js #{&} {
+    @content;
+  }
+}
+
+@mixin font-weight($weight: normal, $font: primary) {
+  @if $weight == light {
+    font-weight: 300;
+  } @else if $weight == normal {
+    font-weight: 400;
+  } @else if $weight == bold {
+    font-weight: 500;
+  } @else if $weight == heavy {
+    font-weight: 700;
+  } @else {
+    @error "Unknown $weight, was #{$weight}"
+  }
+}

@@ -20,6 +20,11 @@
     this.emit('end');
   }
 
+  function notifyLiveReload(event) {
+    var fileName = require('path').relative(__dirname, event.path);
+    livereload.changed(fileName);
+  }
+
   gulp.task('sass-site-dev', ['lint-sass'], function() {
     var processors = [
       autoprefixer({browsers: ['last 2 versions']}),
@@ -85,6 +90,7 @@
   gulp.task('watch', ['sass'], function() {
     livereload.listen();
     gulp.watch('./sass/**/*.scss', ['sass']);
+    gulp.watch('./**/*.php', notifyLiveReload);
   });
 
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);

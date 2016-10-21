@@ -95,5 +95,5 @@
 
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);
   gulp.task('sass', [ 'sass-site', 'sass-editor', 'sass-admin' ]);
-  gulp.task('default', ['sass-site']);
+  gulp.task('default', ['sass']);
 }());

@@ -6,14 +6,30 @@
 
 Screaming Fist Logo created by [Michael Wolfe](http://www.wolfecreativedesign.com/#/screaming-fist/)
 
-## Setup
+### Features
+
+* Custom CSS for WYSIWYG editor
+* Custom CSS for WP Admin
+* Far futures expiration of CSS file
+* gulp build process with autoprefixer and livereload
+* Separate development and production CSS
+
+### Setup
 
 ```
 npm install
+bower install
 gulp
 ```
 
-## Class Namespaces
+### Development
+
+Run `gulp` in "watch mode" so that CSS is regenerated from Sass and browsers are reloaded via [livereload](http://livereload.com/extensions/) when Sass changes.
+```
+gulp watch
+```
+
+### Class Namespaces
 
 * `b-` base styles
 * `c-` components
@@ -22,7 +38,7 @@ gulp
 * `lt-` local tokens
 * `s-` scopes
 
-## Resources
+### Resources
 
 * <https://sass-guidelin.es/> - An opinionated styleguide for writing sane, maintainable and scalable Sass.
 * <http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/>

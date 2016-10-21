@@ -6,7 +6,7 @@
     "Matt Vanderpol <matt@vanderpol.net> (https://mattvanderpol.com/)"
   ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "http://screamingfist.xyz",
   "private": true,
   "ignore": [
     "**/.*",
@@ -14,5 +14,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bourbon": "^4.2.7"
+  }
 }

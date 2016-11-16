@@ -161,7 +161,7 @@ class ScreamingFist {
     // Defensive programming
     if ( $this->isCssFile($stylesheet_uri) ) {
       // Default to prod
-      $suffix = '-prod.scss';
+      $suffix = '-prod.css';
       if ( $this->debugModeActive() ) {
         $suffix = '-dev.css';
       }

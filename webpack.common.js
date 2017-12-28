@@ -1,0 +1,20 @@
+const path = require('path')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+
+module.exports = {
+  entry: [
+    './src/js/index.js',
+    './sass/style.scss'
+  ],
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new ExtractTextPlugin({ filename: "[name].css" })
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+

@@ -1,5 +1,6 @@
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const autoprefixer = require('autoprefixer')
 
 const extractSass = new ExtractTextPlugin({
   filename: "[name].[contenthash].css"
@@ -32,6 +33,16 @@ module.exports = {
               // translates CSS into CommonJS
               loader: "css-loader", options: {
                 sourceMap: true
+              }
+            },
+            {
+              loader: 'postcss-loader', options: {
+                sourceMap: true,
+                plugins () {
+                  return [
+                    autoprefixer({browsers: ['last 2 versions']})
+                  ]
+                }
               }
             },
             {

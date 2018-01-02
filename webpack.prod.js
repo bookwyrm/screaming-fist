@@ -1,12 +1,14 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
 
 module.exports = merge(common, {
-  devtool: 'source-map',
   plugins: [
-    new ExtractTextPlugin({filename: "style-dev.css"})
+    new ExtractTextPlugin({filename: "style-prod.css"}),
+    new UglifyJSPlugin()
   ],
   module: {
     rules: [
@@ -32,7 +34,8 @@ module.exports = merge(common, {
                 sourceMap: true,
                 plugins () {
                   return [
-                    autoprefixer({browsers: ['last 2 versions']})
+                    autoprefixer({browsers: ['last 2 versions']}),
+                    cssnano()
                   ]
                 }
               }
@@ -50,3 +53,4 @@ module.exports = merge(common, {
     ]
   }
 });
+

@@ -30,6 +30,7 @@
     "stylelint": "^8.4.0",
     "stylelint-scss": "^2.2.0",
     "webpack": "^3.10.0",
+    "webpack-extraneous-file-cleanup-plugin": "^1.0.5",
     "webpack-merge": "^4.1.1"
   }
 }

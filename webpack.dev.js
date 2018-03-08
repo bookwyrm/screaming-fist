@@ -1,12 +1,17 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const ExtraneousFileCleanupPlugin = require('webpack-extraneous-file-cleanup-plugin');
 const autoprefixer = require('autoprefixer')
 
 module.exports = merge(common, {
   devtool: 'source-map',
   plugins: [
-    new ExtractTextPlugin({filename: "style-dev.css"})
+    new ExtractTextPlugin({filename: "style-dev.css"}),
+    new ExtraneousFileCleanupPlugin({
+      extensions: [ '.js', '.js.map' ],
+      minBytes: 3000
+    })
   ],
   module: {
     rules: [

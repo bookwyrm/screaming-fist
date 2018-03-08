@@ -5,12 +5,12 @@ const ExtraneousFileCleanupPlugin = require('webpack-extraneous-file-cleanup-plu
 const autoprefixer = require('autoprefixer')
 
 module.exports = merge(common, {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   plugins: [
     new ExtractTextPlugin({filename: "style-dev.css"}),
     new ExtraneousFileCleanupPlugin({
-      extensions: [ '.js', '.js.map' ],
-      minBytes: 3000
+      extensions: [ '.js' ],
+      minBytes: 8000
     })
   ],
   module: {

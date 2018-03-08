@@ -8,7 +8,7 @@ module.exports = {
     style: './sass/style.scss'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist'])
   ],
   output: {
     filename: '[name].js',

@@ -11,8 +11,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist'])
   ],
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    filename: '[name].js'
   }
 }
 

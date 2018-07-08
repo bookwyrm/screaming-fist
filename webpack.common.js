@@ -1,6 +1,5 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: {

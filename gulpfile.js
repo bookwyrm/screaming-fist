@@ -19,6 +19,7 @@
   var webpackDevConfig = require('./webpack.dev.js');
   var webpackProdConfig = require('./webpack.prod.js');
   var named = require('vinyl-named');
+  var eslint = require('gulp-eslint');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
@@ -45,6 +46,15 @@
       .pipe(named())
       .pipe(webpackStream(webpackProdConfig, webpack))
       .pipe(gulp.dest('./js'));
+  });
+
+  gulp.task('lint-js', function() {
+    return gulp.src(['./js/src/**.js'])
+      .pipe(plumber({errorHandler: function() { gutil.beep(); }}))
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError())
+    ;
   });
 
   gulp.task('sass-site-dev', ['lint-sass'], function() {

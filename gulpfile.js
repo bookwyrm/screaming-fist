@@ -111,7 +111,7 @@
   });
 
   gulp.task('lint-sass', function() {
-    return gulp.src('./sass/**/*.scss')
+    return gulp.src(['./sass/**/*.scss', '!./sass/vendor/*.scss'])
       .pipe(gulpStylelint({
         reporters: [
           {formatter: 'string', console: true}

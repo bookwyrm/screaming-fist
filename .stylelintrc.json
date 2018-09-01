@@ -2,7 +2,9 @@
   "plugins": [
     "stylelint-scss",
     "stylelint-declaration-use-variable",
-    "stylelint-order"
+    "stylelint-order",
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-high-performance-animation"
   ],
   "rules": {
     "color-hex-case": "lower",
@@ -18,6 +20,8 @@
     "scss/at-import-no-partial-leading-underscore": true,
     "scss/selector-no-redundant-nesting-selector": true,
     "sh-waqar/declaration-use-variable": "color",
+    "plugin/declaration-block-no-ignored-properties": true,
+    "plugin/no-low-performance-animation-properties": true,
     "order/order": [
       "custom-properties",
       "dollar-variables",

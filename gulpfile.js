@@ -107,7 +107,7 @@
     }));
   });
 
-  gulp.task('watch', ['sass'], function() {
+  gulp.task('watch', ['sass', 'js'], function() {
     livereload.listen();
     gulp.watch('./sass/**/*.scss', ['sass']);
     gulp.watch('./**/*.php', notifyLiveReload);
@@ -115,5 +115,6 @@
 
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);
   gulp.task('sass', [ 'sass-site', 'sass-editor', 'sass-admin' ]);
-  gulp.task('default', ['sass']);
+  gulp.task('js', [ 'js-dev', 'js-prod' ]);
+  gulp.task('default', ['sass', 'js']);
 }());

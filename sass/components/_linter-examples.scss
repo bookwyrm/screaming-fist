@@ -1,5 +1,10 @@
 .c-block {
   padding:20px;
 margin-top: 10px;color: #ff0000;
+  width: 100px;
+  display: inline;
 
+  &:hover {
+    transition: margin-top 350ms ease-in;
+  }
 }

@@ -1,0 +1,12 @@
+{
+    "name": "matt/screaming-fist",
+    "description": "WordPress sample theme",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Matt Vanderpol",
+            "email": "matt@vanderpol.net"
+        }
+    ],
+    "require": {}
+}

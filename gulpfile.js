@@ -33,7 +33,7 @@
     livereload.changed(fileName);
   }
 
-  gulp.task('js-dev', function() {
+  gulp.task('js-dev', ['lint-js'], function() {
     return gulp.src(['js/src/main.js'])
       .pipe(named())
       .pipe(webpackStream(webpackDevConfig, webpack))
@@ -41,7 +41,7 @@
       .pipe(livereload());
   });
 
-  gulp.task('js-prod', ['js-dev'], function() {
+  gulp.task('js-prod', ['lint-js', 'js-dev'], function() {
     return gulp.src(['js/src/main.js'])
       .pipe(named())
       .pipe(webpackStream(webpackProdConfig, webpack))

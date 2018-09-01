@@ -12,6 +12,11 @@
   var cssnano = require('cssnano');
   var gulpStylelint = require('gulp-stylelint');
   var livereload = require('gulp-livereload');
+  var webpack = require('webpack');
+  var webpackStream = require('webpack-stream');
+  var webpackDevConfig = require('./webpack.dev.js');
+  var webpackProdConfig = require('./webpack.prod.js');
+  var named = require('vinyl-named');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
@@ -24,6 +29,21 @@
     var fileName = require('path').relative(__dirname, event.path);
     livereload.changed(fileName);
   }
+
+  gulp.task('js-dev', function() {
+    return gulp.src(['js/src/main.js'])
+      .pipe(named())
+      .pipe(webpackStream(webpackDevConfig, webpack))
+      .pipe(gulp.dest('./js'))
+      .pipe(livereload());
+  });
+
+  gulp.task('js-prod', ['js-dev'], function() {
+    return gulp.src(['js/src/main.js'])
+      .pipe(named())
+      .pipe(webpackStream(webpackProdConfig, webpack))
+      .pipe(gulp.dest('./js'));
+  });
 
   gulp.task('sass-site-dev', ['lint-sass'], function() {
     var processors = [
@@ -87,7 +107,7 @@
     }));
   });
 
-  gulp.task('watch', ['sass'], function() {
+  gulp.task('watch', ['sass', 'js'], function() {
     livereload.listen();
     gulp.watch('./sass/**/*.scss', ['sass']);
     gulp.watch('./**/*.php', notifyLiveReload);
@@ -95,5 +115,6 @@
 
   gulp.task('sass-site', ['sass-site-dev', 'sass-site-prod']);
   gulp.task('sass', [ 'sass-site', 'sass-editor', 'sass-admin' ]);
-  gulp.task('default', ['sass']);
+  gulp.task('js', [ 'js-dev', 'js-prod' ]);
+  gulp.task('default', ['sass', 'js']);
 }());

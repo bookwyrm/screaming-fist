@@ -10,18 +10,18 @@
   "author": "Matt Vanderpol <matt@vanderpol.net> (https://mattvanderpol.com/)",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^6.5.1",
-    "cssnano": "^3.7.7",
+    "autoprefixer": "^9.1.3",
+    "cssnano": "^4.1.0",
     "gulp": "^3.9.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-stylelint": "^3.4.0",
+    "gulp-livereload": "^4.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^7.0.0",
     "gulp-util": "^3.0.7",
-    "stylelint": "^7.5.0",
-    "stylelint-scss": "^1.3.4"
+    "stylelint": "^9.5.0",
+    "stylelint-scss": "^3.3.0"
   }
 }

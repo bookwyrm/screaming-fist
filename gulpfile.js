@@ -38,7 +38,7 @@
       .pipe(livereload());
   });
 
-  gulp.task('js-prod', function() {
+  gulp.task('js-prod', ['js-dev'], function() {
     return gulp.src(['js/src/main.js'])
       .pipe(named())
       .pipe(webpackStream(webpackProdConfig, webpack))

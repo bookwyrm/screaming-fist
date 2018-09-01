@@ -1,3 +1,5 @@
+/* global __dirname */
+
 (function() {
   'use strict';
 
@@ -17,20 +19,21 @@
   var webpackDevConfig = require('./webpack.dev.js');
   var webpackProdConfig = require('./webpack.prod.js');
   var named = require('vinyl-named');
+  var eslint = require('gulp-eslint');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
     console.log('An error ocurred: ', gutil.colors.magenta(err.message));
     gutil.beep();
     this.emit('end');
-  }
+  };
 
   function notifyLiveReload(event) {
     var fileName = require('path').relative(__dirname, event.path);
     livereload.changed(fileName);
   }
 
-  gulp.task('js-dev', function() {
+  gulp.task('js-dev', ['lint-js'], function() {
     return gulp.src(['js/src/main.js'])
       .pipe(named())
       .pipe(webpackStream(webpackDevConfig, webpack))
@@ -38,11 +41,20 @@
       .pipe(livereload());
   });
 
-  gulp.task('js-prod', ['js-dev'], function() {
+  gulp.task('js-prod', ['lint-js', 'js-dev'], function() {
     return gulp.src(['js/src/main.js'])
       .pipe(named())
       .pipe(webpackStream(webpackProdConfig, webpack))
       .pipe(gulp.dest('./js'));
+  });
+
+  gulp.task('lint-js', function() {
+    return gulp.src(['./js/src/**.js'])
+      .pipe(plumber({errorHandler: function() { gutil.beep(); }}))
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError())
+    ;
   });
 
   gulp.task('sass-site-dev', ['lint-sass'], function() {
@@ -50,15 +62,15 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
-    .pipe(sourcemaps.write())
-    .pipe(rename("style-dev.css"))
-    .pipe(gulp.dest('./'))
-    .pipe(livereload())
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sourcemaps.init())
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'))
+      .pipe(sourcemaps.write())
+      .pipe(rename('style-dev.css'))
+      .pipe(gulp.dest('./'))
+      .pipe(livereload());
   });
 
   gulp.task('sass-site-prod', ['lint-sass'], function() {
@@ -67,12 +79,12 @@
       cssnano(),
     ];
     return gulp.src('./sass/style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(rename("style-prod.css"))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sourcemaps.init())
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(rename('style-prod.css'))
+      .pipe(gulp.dest('./'));
   });
 
 
@@ -81,10 +93,10 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/wp-editor-style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'));
   });
 
   gulp.task('sass-admin', ['lint-sass'], function() {
@@ -92,19 +104,19 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/wp-admin-style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'));
   });
 
   gulp.task('lint-sass', function() {
     return gulp.src('./sass/**/*.scss')
-    .pipe(gulpStylelint({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }));
+      .pipe(gulpStylelint({
+        reporters: [
+          {formatter: 'string', console: true}
+        ]
+      }));
   });
 
   gulp.task('watch', ['sass', 'js'], function() {

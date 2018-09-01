@@ -1,3 +1,5 @@
+/* global __dirname */
+
 (function() {
   'use strict';
 
@@ -23,7 +25,7 @@
     console.log('An error ocurred: ', gutil.colors.magenta(err.message));
     gutil.beep();
     this.emit('end');
-  }
+  };
 
   function notifyLiveReload(event) {
     var fileName = require('path').relative(__dirname, event.path);
@@ -50,15 +52,15 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
-    .pipe(sourcemaps.write())
-    .pipe(rename("style-dev.css"))
-    .pipe(gulp.dest('./'))
-    .pipe(livereload())
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sourcemaps.init())
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'))
+      .pipe(sourcemaps.write())
+      .pipe(rename('style-dev.css'))
+      .pipe(gulp.dest('./'))
+      .pipe(livereload());
   });
 
   gulp.task('sass-site-prod', ['lint-sass'], function() {
@@ -67,12 +69,12 @@
       cssnano(),
     ];
     return gulp.src('./sass/style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(rename("style-prod.css"))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sourcemaps.init())
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(rename('style-prod.css'))
+      .pipe(gulp.dest('./'));
   });
 
 
@@ -81,10 +83,10 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/wp-editor-style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'));
   });
 
   gulp.task('sass-admin', ['lint-sass'], function() {
@@ -92,19 +94,19 @@
       autoprefixer({browsers: ['last 2 versions']}),
     ];
     return gulp.src('./sass/wp-admin-style.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sass({ outputStyle: 'nested' }))
-    .pipe(postcss(processors))
-    .pipe(gulp.dest('./'))
+      .pipe(plumber({errorHandler: onError}))
+      .pipe(sass({ outputStyle: 'nested' }))
+      .pipe(postcss(processors))
+      .pipe(gulp.dest('./'));
   });
 
   gulp.task('lint-sass', function() {
     return gulp.src('./sass/**/*.scss')
-    .pipe(gulpStylelint({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }));
+      .pipe(gulpStylelint({
+        reporters: [
+          {formatter: 'string', console: true}
+        ]
+      }));
   });
 
   gulp.task('watch', ['sass', 'js'], function() {

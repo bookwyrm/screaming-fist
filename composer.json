@@ -8,5 +8,11 @@
             "email": "matt@vanderpol.net"
         }
     ],
-    "require": {}
+    "require": {
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "^1.1"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4"
+    }
 }

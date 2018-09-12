@@ -20,6 +20,7 @@
   var webpackProdConfig = require('./webpack.prod.js');
   var named = require('vinyl-named');
   var eslint = require('gulp-eslint');
+  var phpcs = require('gulp-phpcs');
 
   var onError = function(err) {
     // eslint-disable-next-line no-console
@@ -117,6 +118,16 @@
           {formatter: 'string', console: true}
         ]
       }));
+  });
+
+  gulp.task('lint-php', function() {
+    return gulp.src(['./*.php', './classes/**/*.php', './template-parts/**/*.php'])
+      .pipe(phpcs({
+        bin: 'vendor/bin/phpcs',
+        showSniffCode: true,
+        colors: true
+      }))
+      .pipe(phpcs.reporter('log'));
   });
 
   gulp.task('watch', ['sass', 'js'], function() {

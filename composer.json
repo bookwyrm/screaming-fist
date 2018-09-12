@@ -1,0 +1,18 @@
+{
+    "name": "matt/screaming-fist",
+    "description": "WordPress sample theme",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Matt Vanderpol",
+            "email": "matt@vanderpol.net"
+        }
+    ],
+    "require": {
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "^1.1"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4"
+    }
+}

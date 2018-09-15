@@ -2,7 +2,8 @@
   padding:20px;
 margin-top: 10px;color: #ff0000;
   width: 100px;
-  display: inline;
+  // stylelint-disable-next-line declaration-no-important
+  display: inline !important;
 
   &:hover {
     transition: margin-top 350ms ease-in;
